@@ -15,7 +15,7 @@ abstract class CustomRouterDelegate<R> extends RouterDelegate<R>
   Widget build(BuildContext context) {
     return BackButtonListener(
       onBackButtonPressed: () async {
-        if (pages.length > 1) {
+        if (_navigatorKey.currentState?.canPop() ?? false) {
           _navigatorKey.currentState?.pop();
           return true;
         } else {
